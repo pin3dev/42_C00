@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ivbatist <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/20 22:14:48 by ivbatist          #+#    #+#             */
+/*   Updated: 2023/12/20 22:14:49 by ivbatist         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contacts.hpp"
 #include "Phonebook.hpp"
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <cstdlib>
 
 int		ck_members_class(Contacts &c)
 {
@@ -72,4 +85,13 @@ std::string		get_data(std::string msg, int type)
 		return(get_data(msg, type));
 	}
 	return (data);
+}
+
+
+int	my_atoi(std::string str)
+{
+	int numb;
+
+	numb = std::atoi(str.c_str());
+	return numb;
 }

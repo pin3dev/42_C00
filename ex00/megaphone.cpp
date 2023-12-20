@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ivbatist <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/20 22:12:53 by ivbatist          #+#    #+#             */
+/*   Updated: 2023/12/20 22:12:55 by ivbatist         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <cctype>
-#include <string>
+#include <sstream>
 
 void toUpperCase(std::string& str) 
 {
@@ -18,6 +30,8 @@ int main(int ac, char** av)
 			str = av[i];
 			toUpperCase(str);
 			std::cout << str;
+			if(i != (ac - 1))
+				std::cout << " ";
 		}
 		std::cout << std::endl;
 		return(0);

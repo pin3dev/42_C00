@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ivbatist <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/20 22:13:54 by ivbatist          #+#    #+#             */
+/*   Updated: 2023/12/20 22:13:56 by ivbatist         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
@@ -30,5 +42,7 @@ int		ck_members_class(Contacts &c);
 void	print_line_aligned(std::string s1, std::string s2, std::string s3, std::string s4);
 std::string		get_data(std::string msg, int type);
 std::string  abr(std::string data);
+int	my_atoi(std::string str);
+bool		check_input_numb(std::string input, Phonebook *div);
 
 #endif
