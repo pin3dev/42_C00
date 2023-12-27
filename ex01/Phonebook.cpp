@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
+#include <string>
 #include <iostream>
 #include <sstream>
 
 //MÉTODO
-Contacts&	Phonebook::getter_contact(int index)
+Contact&	Phonebook::getterContact(int index)
 {
 	return (contact[index]);
 }
@@ -28,7 +29,7 @@ void		add_contact(Phonebook *div, int &i)
 	std::string	sname;
 	std::string	nname;
 	std::string	pnumber;
-	Contacts *cur;
+	Contact *cur;
 
 	fname = get_data("First Name", ALPHAS);
 	sname = get_data("Second Name", ALPHAS);
@@ -36,7 +37,7 @@ void		add_contact(Phonebook *div, int &i)
 	pnumber = get_data("Phone Number", DIGITS);
 	dsecret = get_data("Dark Secret", ALPHAS);
 
-	cur = &div->getter_contact(i);
+	cur = &div->getterContact(i);
 	cur->setterFname(fname);
 	cur->setterSname(sname);
 	cur->setterNname(nname);
@@ -52,7 +53,7 @@ void		add_contact(Phonebook *div, int &i)
 void	search_contact(Phonebook *div)
 {
 	std::string	input;
-	Contacts cur;
+	Contact cur;
 
 	print_line_aligned("Index", "FirstName", "LastName", "NickName");
 	for (int j = 0; j < 8; j++)
@@ -61,20 +62,23 @@ void	search_contact(Phonebook *div)
 
 		t << j;
 		std::string index = t.str();
-		cur = div->Phonebook::getter_contact(j);
+		cur = div->Phonebook::getterContact(j);
 		if (!ck_members_class(cur))
 			break ;
 		print_line_aligned((index), abr(cur.getterFname()), abr(cur.getterSname()), abr(cur.getterNname()));
 	}
 	std::cout << BKGRAY "[Advice]: Enter index of contact:" RESET " ";
-	if (!std::getline(std::cin, input) || !isdigit(input[0]) 
-		|| input.length() > 1 || input.empty() || my_atoi(input) > 7)
+	
+	if (!getline(std::cin, input, '\n') || std::cin.eof() || !std::cin)
+		std::exit (1);
+	if (!isdigit(input[0]) || input.length() > 1 || input.empty() || my_atoi(input) > 7)
 	{
-		std::cout << RED "[Error]: Wrong command format. Try again..." RESET << std::endl;
+		std::cerr << RED "[Error]: Wrong command format. Try again..." RESET << std::endl;
 		search_contact(div);
 		return ;
 	}
-	cur = div->Phonebook::getter_contact((my_atoi(input)));
+
+	cur = div->Phonebook::getterContact((my_atoi(input)));
 	if (ck_members_class(cur))
 	{
 		std::cout << GREEN "First Name : " << cur.getterFname() << std::endl;
@@ -84,6 +88,6 @@ void	search_contact(Phonebook *div)
 		std::cout << "Dark Secret : " << cur.getterDsecret() + RESET << std::endl;
 		return ;
 	}
-	std::cout << RED "[Error]: Contact not found. Try again..." RESET << std::endl;
+	std::cerr << RED "[Error]: Contact not found. Try again..." RESET << std::endl;
 	search_contact(div);
 }

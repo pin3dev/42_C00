@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contacts.hpp"
+#include "Contact.hpp"
 #include "Phonebook.hpp"
-#include <iostream>
-#include <iomanip>
 #include <string>
+#include <iomanip>
 #include <cstdlib>
+#include <iostream>
 
-int		ck_members_class(Contacts &c)
+int		ck_members_class(Contact &c)
 {
 	if (c.getterFname().empty() || c.getterSname().empty()
 		|| c.getterNname().empty() || c.getterPnumber().empty()
@@ -31,7 +31,7 @@ std::string  abr(std::string data)
 	std::string abr;
 
 	abr = data;
-	if (data.length() - 1 >= 10)
+	if (data.length() >= 10)
 		abr = data.substr(0, 9) + ".";
 	return (abr);
 }
@@ -65,7 +65,7 @@ static int valid_cmd(std::string cmd, int type)
 	{
 		for (int c = 0; cmd[c];)
 		{
-			if (isalpha(cmd[c]) /* || cmd[c] == 32 */)
+			if (isalpha(cmd[c]))
 				c++;
 			else
 				return (0);
@@ -78,15 +78,18 @@ std::string		get_data(std::string msg, int type)
 {
 	std::string data;
 	std::cout << BKGRAY + msg << ":" RESET << std::endl;
-	if (!std::getline(std::cin, data) || !valid_cmd(data, type))
-	{	
-		std::cout << RED "\""<< data << "\"" << " is not a " << msg << " valid." RESET << std::endl; 
-		std::cout << RED "Try again..." RESET << std::endl;
+	
+	if (!getline(std::cin, data, '\n') || std::cin.eof())
+		std::exit (1);
+
+	if (!valid_cmd(data, type))
+	{
+		std::cerr << RED "\""<< data << "\"" << " is not a " << msg << " valid." RESET << std::endl; 
+		std::cerr << RED "Try again..." RESET << std::endl;
 		return(get_data(msg, type));
 	}
 	return (data);
 }
-
 
 int	my_atoi(std::string str)
 {

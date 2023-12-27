@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contacts.cpp                                       :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivbatist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,56 +10,57 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contacts.hpp"
+#include "Contact.hpp"
+#include <string>
 
 //IMPLEMENTAÇÃO DOS MÉTODOS SETTER
-void Contacts::setterFname(std::string Fame)
+void Contact::setterFname(std::string Fame)
 {
 	Fname = Fame;
 }
 
-void Contacts::setterSname(std::string Same)
+void Contact::setterSname(std::string Same)
 {
 	Sname = Same;
 }
 
-void Contacts::setterNname(std::string Name)
+void Contact::setterNname(std::string Name)
 {
 	Nname = Name;
 }
 
-void Contacts::setterPnumber(std::string phone)
+void Contact::setterPnumber(std::string phone)
 {
 	Pnumber = phone;
 }
 
-void Contacts::setterDsecret(std::string secret)
+void Contact::setterDsecret(std::string secret)
 {
 	Dsecret = secret;
 }
 
 //IMPLEMENTAÇÃO DOS MÉTODOS GETTER
-std::string Contacts::getterFname()
+std::string Contact::getterFname()
 {
 	return (Fname);
 }
 
-std::string Contacts::getterSname()
+std::string Contact::getterSname()
 {
 	return (Sname);
 }
 
-std::string Contacts::getterNname()
+std::string Contact::getterNname()
 {
 	return (Nname);
 }
 
-std::string Contacts::getterPnumber()
+std::string Contact::getterPnumber()
 {
 	return (Pnumber);
 }
 
-std::string Contacts::getterDsecret()
+std::string Contact::getterDsecret()
 {
 	return (Dsecret);
 }

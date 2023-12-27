@@ -12,7 +12,6 @@
 
 #include <iostream>
 #include <cctype>
-#include <sstream>
 
 void toUpperCase(std::string& str) 
 {
@@ -30,12 +29,11 @@ int main(int ac, char** av)
 			str = av[i];
 			toUpperCase(str);
 			std::cout << str;
-			if(i != (ac - 1))
-				std::cout << " ";
 		}
 		std::cout << std::endl;
 		return(0);
 	}
-	std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+	std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *"
+	<< std::endl;
     return 0;
 }

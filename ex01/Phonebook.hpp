@@ -13,7 +13,7 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-#include "Contacts.hpp"
+#include "Contact.hpp"
 #include <string>
 
 #define ALPHAS	1
@@ -28,9 +28,9 @@
 class Phonebook
 {
 	private : 
-		Contacts contact[8];
+		Contact contact[8];
 	public : 
-		Contacts	&getter_contact(int i);
+		Contact	&getterContact(int i);
 };
 
 //MAIN
@@ -38,11 +38,12 @@ void	add_contact(Phonebook *div, int &i);
 void	search_contact(Phonebook *div);
 
 //UTILS
-int		ck_members_class(Contacts &c);
+int		ck_members_class(Contact &c);
+int		my_atoi(std::string str);
 void	print_line_aligned(std::string s1, std::string s2, std::string s3, std::string s4);
-std::string		get_data(std::string msg, int type);
-std::string  abr(std::string data);
-int	my_atoi(std::string str);
-bool		check_input_numb(std::string input, Phonebook *div);
+bool	check_input_numb(std::string input, Phonebook *div);
+
+std::string	get_data(std::string msg, int type);
+std::string abr(std::string data);
 
 #endif

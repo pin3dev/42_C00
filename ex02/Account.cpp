@@ -20,6 +20,11 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
+//MÉTODO CONSTRUCTOR PADRÃO:
+Account::Account()
+{
+}
+
 //MÉTODO CONSTRUCTOR: com lista de inicialização
 Account::Account(int initial_deposit)
 	: _accountIndex(_nbAccounts), _amount(initial_deposit),
@@ -89,7 +94,7 @@ void Account::makeDeposit(int deposit)
 
 		//continuação de impressão
 		std::cout << /* GREEN */ ";deposit:" << deposit
-				  << ";amount:" << this->_amount
+				  << ";amount:" << Account::checkAmount()
 				  << ";nb_deposits:" << this->_nbDeposits
 				  /* << RESET */ << std::endl;
 	}
@@ -100,16 +105,19 @@ void Account::makeDeposit(int deposit)
 //MÉTODO SETTER
 bool Account::makeWithdrawal(int withdrawal)
 {
-	//verificação de erro
-	if (withdrawal <= 0)
-		return (false);
 	//início de impressão
 	_displayTimestamp();
 	std::cout << /* RED */ " index:" << this->_accountIndex
-			  << ";p_amount:" << Account::checkAmount();
-			  /*<< RESET ;*/
+			<< ";p_amount:" << Account::checkAmount();
+			/*<< RESET ;*/
 	//verificação de erro
-	if (this->_amount - withdrawal >= 0)
+	if (withdrawal <= 0 || this->_amount - withdrawal < 0)
+	{
+		std::cout << /* RED */ ";withdrawal:refused" /* RESET  */<< std::endl;
+		return (false);
+	}
+	//verificação de erro
+	else if (this->_amount - withdrawal >= 0)
 	{
 		//incremento em atributos do objetos
 		this->_nbWithdrawals++;
@@ -125,11 +133,7 @@ bool Account::makeWithdrawal(int withdrawal)
 				  /* << RESET */ << std::endl;
 		return (true);
 	}
-	else	//retorno de erro
-	{
-		std::cout << /* RED */ ";withdrawal:refused" /* RESET  */<< std::endl;
-		return (false);
-	}
+	return (false);
 }
 
 //MÉTODO DISPLAYER (GETTER CONST)

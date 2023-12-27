@@ -32,9 +32,9 @@ int main(void)
 	size_t const amounts_size(sizeof(amounts) / sizeof(int));
 	
 	//CRIAÇÃO DO CONTAINER ACCOUNTS DO TIPO ACCOUNTS_T &&
-	//INICIALIZAÇÃO DOS OBJETOS ACCOUNTS_T DENTRO DO CONTAINER COM
-	/*	Todos os valores presentes no array int amounts[] são passados 
-	como parâmetro para o constuctor de instaciamento do objeto		*/
+	//INICIALIZAÇÃO DOS OBJETOS ACCOUNTS_T DENTRO DO CONTAINER COM VALORES DO ARRAY
+	/*	Todos os valores presentes no array int amounts[] da posição 0 a posição 0+amount_size
+	são passados como parâmetro para o constuctor de instaciamento do objeto		*/
 	accounts_t accounts(amounts, amounts + amounts_size);
 
 	/*	[	PRIMEIRO OUTPUT		] -> constructor Account(int): 

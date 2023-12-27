@@ -16,9 +16,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 CPP = c++
 
-SRC = Phonebook.cpp Contacts.cpp utils.cpp main.cpp
+SRC = Phonebook.cpp Contact.cpp utils.cpp main.cpp
 
-HEADER = Phonebook.hpp Contacts.hpp
+HEADER = Phonebook.hpp Contact.hpp
 
 OBJ = $(SRC:.cpp=.o)
 

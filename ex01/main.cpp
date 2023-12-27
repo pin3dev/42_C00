@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
-#include "Contacts.hpp"
+#include "Contact.hpp"
 #include <iostream>
 #include <string>
 
@@ -43,7 +43,7 @@ int main(void)
 	{
 		status = false;
 		print_menu();
-		if (!std::getline(std::cin, input))
+		if (!std::getline(std::cin, input) || std::cin.eof())
 			return (false);
 		if (!input.compare("EXIT"))
 			return (false);
@@ -53,7 +53,7 @@ int main(void)
 			exec_menu(input, my, index);
 		}
 		if	(!status)
-			std::cout << RED "[Error]: Command not found. Try again..." RESET << std::endl;
+			std::cerr << RED "[Error]: Command not found. Try again..." RESET << std::endl;
 	}
 	return (0);
 }
