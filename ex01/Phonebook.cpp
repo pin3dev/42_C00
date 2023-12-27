@@ -14,6 +14,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
 
 //MÉTODO
 Contact&	Phonebook::getterContact(int index)
